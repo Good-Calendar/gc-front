@@ -4,9 +4,7 @@ import { Grid } from '@material-ui/core';
 import { BiBell } from 'react-icons/bi';
 import { BiWrench } from 'react-icons/bi';
 
-const style = {background: "red", height: "50px"};
-
-const Nav = (props: any) => {
+const Nav = () => {
     return (
         <div>
             <Grid container spacing={3}>
@@ -14,7 +12,7 @@ const Nav = (props: any) => {
                     <DaySelector />
                 </Grid>
                 <Grid item xs={8}>
-                    <CategorySelector onChange={props.onChange} category={props.category}/>
+                    <CategorySelector />
                 </Grid>
                 <Grid item xs={1}>
                     <BiBell size={30} />
