@@ -1,38 +1,20 @@
-import { useState } from "react";
 import Nav from "./components/Navigation/Nav";
+import useCategory, { CategoryContext } from "./components/useCategory";
 // import { injectGlobal } from "styled-components";
 
 function App() {
-  //   injectGlobal`
-  // body {
-  //   margin: 0;
-  //   padding: 0;
-  // }
-  // `;
+  // const [category, handlerCategory] = useCategory();
+  // const categoryProps = { category, handlerCategory };
 
-  const [category, setCategory] = useState({
-    DAY: false,
-    WEEK: false,
-    MONTH: true,
-    YEAR: false
-  });
-
-  const onChange = (e: any) => {
-    setCategory({
-      DAY: false,
-      WEEK: false,
-      MONTH: false,
-      YEAR: false,
-      [e.target.value]: true
-    });
-  };
-
-  console.log("category : ", category);
-
+  const [selectedCategory, handlerCategory] = useCategory();
+  const categoryProps = { selectedCategory, handlerCategory };
+  const CategoryProvider = CategoryContext.Provider;
   return (
-    <div>
-      <Nav category={category} onChange={onChange} />
-    </div>
+    <  >
+      <CategoryProvider value={categoryProps}>
+        <Nav />
+      </CategoryProvider>
+    </ >
   );
 }
 
