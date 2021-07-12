@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Nav from "./components/Navigation/Nav";
 // import { injectGlobal } from "styled-components";
-
 function App() {
   //   injectGlobal`
   // body {
@@ -35,5 +34,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
