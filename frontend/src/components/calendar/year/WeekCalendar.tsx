@@ -4,16 +4,15 @@ import { Moment } from "../custom-hook/useWeeksOfMonth"
 
 type WeekProps = {
     week: Moment[];
-    currentMonth: number;
 }
 
-const WeekCalendar = ({ week, currentMonth }: WeekProps) => {
+const WeekCalendar = ({ week }: WeekProps) => {
     return (
         <>
             <TrWeek>
                 {
                     week.map((currentMoment: Moment, idx: number) =>
-                        <Date key={idx} currentMoment={currentMoment} currentMonth={currentMonth} />)
+                        <Date key={idx} currentMoment={currentMoment} />)
                 }
             </TrWeek>
         </>

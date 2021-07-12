@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { createContext, useLayoutEffect, useState } from 'react';
 import moment from 'moment';
 
 export interface Moment {
@@ -31,3 +31,5 @@ export default function useWeeksOfMonth(currentMoment: moment.Moment) {
     }, [currentMoment])
     return weeksOfMonth;
 }
+
+export const CurrentMonthContext = createContext(0);

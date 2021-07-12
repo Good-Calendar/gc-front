@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import moment from "moment";
-import { Moment } from "../custom-hook/useWeeksOfMonth"
+import { Moment, CurrentMonthContext } from "../custom-hook/useWeeksOfMonth"
+import { useContext } from "react";
+
 type DateProps = {
     currentMoment: Moment;
-    currentMonth: number;
 }
 const TODAY = moment();
-const Date = ({ currentMoment, currentMonth }: DateProps) => {
+const Date = ({ currentMoment }: DateProps) => {
     const { year, month, date } = currentMoment;
+    const currentMonth = useContext(CurrentMonthContext);
     const isCurrentMonth = month === (currentMonth || 12);
     const isToday = `${year}-${month}-${date}` === TODAY.format('YYYY-M-DD');
 

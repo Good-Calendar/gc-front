@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Nav from "./components/Navigation/Nav";
 // import { injectGlobal } from "styled-components";
-import YearCalendar from "./components/calendar/year/YearCalendar";
-import moment from "moment";
 function App() {
   //   injectGlobal`
   // body {
@@ -29,12 +27,10 @@ function App() {
   };
 
   console.log("category : ", category);
-  const [selectedDate, setDate] = useState(() => moment());
 
   return (
     <div>
       <Nav category={category} onChange={onChange} />
-      <YearCalendar year={selectedDate.year()} />
     </div>
   );
 }
