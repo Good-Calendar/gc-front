@@ -1,25 +1,24 @@
 import moment from 'moment';
-import MonthContainer from './MonthContainer';
+import MonthCalendar from './MonthCalendar';
 import Grid from '@material-ui/core/Grid';
 
-type YearProps = {
-    YEAR: number;
+type YearCalendarProps = {
+    year: number;
 }
 const MONTH_LIST = Array.from(Array(12), (_, idx) => idx);
-
-const YearContainer = ({ YEAR }: YearProps) => {
+const YearCalendar = ({ year }: YearCalendarProps) => {
     return (
         <div>
-            <h2>{YEAR}</h2>
+            <h2>{year}</h2>
             <Grid container spacing={2}>
-                {MONTH_LIST.map((MONTH, idx) =>
+                {MONTH_LIST.map((month, idx) =>
                     <Grid item xs={3} key={idx}>
-                        <MonthContainer DATE={moment().year(YEAR).month(MONTH)} />
+                        <MonthCalendar currentMoment={moment().year(year).month(month)} />
                     </Grid>
                 )}
             </Grid>
         </div>
     );
 };
-export default YearContainer;
+export default YearCalendar;
 

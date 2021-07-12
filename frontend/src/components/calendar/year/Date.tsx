@@ -1,19 +1,22 @@
 import styled from "styled-components";
 import moment from "moment";
-type DayProps = {
-    DATE: moment.Moment;
-    CURRENT_MONTH: number;
+import { Moment } from "../custom-hook/useWeeksOfMonth"
+type DateProps = {
+    currentMoment: Moment;
+    currentMonth: number;
 }
 const TODAY = moment();
-const Day = ({ DATE, CURRENT_MONTH }: DayProps) => {
-    const isCurrentMonth = DATE.month() === CURRENT_MONTH;
-    const isToday = DATE.format('YYYY-MM-DD') === TODAY.format('YYYY-MM-DD');
+const Date = ({ currentMoment, currentMonth }: DateProps) => {
+    const { year, month, date } = currentMoment;
+    const isCurrentMonth = month === (currentMonth || 12);
+    const isToday = `${year}-${month}-${date}` === TODAY.format('YYYY-M-DD');
+
     return (
         <TdDay
             isCurrentMonth={isCurrentMonth}
             isToday={isToday}
             className={isToday ? "today" : "not-today"}
-        >{DATE.date()}</TdDay>
+        >{date}</TdDay>
     )
 }
 
@@ -38,4 +41,4 @@ const TdDay = styled.td`
         !isCurrentMonth && { pointerEvents: "none", color: 'lightgrey' }};
 `;
 
-export default Day;
+export default Date;
